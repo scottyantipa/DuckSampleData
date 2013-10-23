@@ -1,0 +1,17 @@
+[
+  {"name": "IPA", "parentType": "Beer"},
+  {"name": "Ale", "parentType": "Beer"},
+  {"name": "Lager", "parentType": "Beer"},
+  {"name": "Light", "parentType": "Beer"},
+  {"name": "Wheat", "parentType": "Beer"},
+  {"name": "Merlot", "parentType": "Wine"},
+  {"name": "Chardonnary", "parentType": "Wine"},
+  {"name": "Zin", "parentType": "Wine"},
+  {"name": "Pinot", "parentType": "Wine"},
+  {"name": "Cabernet", "parentType": "Wine"},
+  {"name": "Tequila", "parentType": "Liquor"},
+  {"name": "Vodka", "parentType": "Liquor"},
+  {"name": "Rum", "parentType": "Liquor"},
+  {"name": "Whiskey", "parentType": "Liquor"},
+  {"name": "Gin", "parentType": "Liquor"},
+]

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AlcoholSubType" representedClassName="AlcoholSubType" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bottles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Bottle" inverseName="subType" inverseEntity="Bottle" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AlcoholType" inverseName="subTypes" inverseEntity="AlcoholType" syncable="YES"/>
+    </entity>
+    <entity name="AlcoholType" representedClassName="AlcoholType" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AlcoholSubType" inverseName="parent" inverseEntity="AlcoholSubType" syncable="YES"/>
+    </entity>
+    <entity name="Bottle" representedClassName="Bottle" syncable="YES">
+        <attribute name="barcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inventoryShapshots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InventorySnapshotForBottle" inverseName="whichBottle" inverseEntity="InventorySnapshotForBottle" syncable="YES"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderForBottle" inverseName="whichBottle" inverseEntity="OrderForBottle" syncable="YES"/>
+        <relationship name="subType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AlcoholSubType" inverseName="bottles" inverseEntity="AlcoholSubType" syncable="YES"/>
+    </entity>
+    <entity name="InventorySnapshotForBottle" representedClassName="InventorySnapshotForBottle" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="whichBottle" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Bottle" inverseName="inventoryShapshots" inverseEntity="Bottle" syncable="YES"/>
+    </entity>
+    <entity name="Order" representedClassName="Order" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="totalAmount" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="ordersByBottle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderForBottle" inverseName="whichOrder" inverseEntity="OrderForBottle" syncable="YES"/>
+        <relationship name="whichVendor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Vendor" inverseName="whichOrder" inverseEntity="Vendor" syncable="YES"/>
+    </entity>
+    <entity name="OrderForBottle" representedClassName="OrderForBottle" syncable="YES">
+        <attribute name="quantity" optional="YES" attributeType="Integer 64" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="unitPrice" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="whichBottle" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Bottle" inverseName="orders" inverseEntity="Bottle" syncable="YES"/>
+        <relationship name="whichOrder" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="ordersByBottle" inverseEntity="Order" syncable="YES"/>
+    </entity>
+    <entity name="Vendor" syncable="YES">
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="whichOrder" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="whichVendor" inverseEntity="Order" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AlcoholSubType" positionX="-2169" positionY="-3022" width="128" height="88"/>
+        <element name="AlcoholType" positionX="-2169" positionY="-3141" width="128" height="73"/>
+        <element name="Bottle" positionX="-2169" positionY="-2884" width="128" height="118"/>
+        <element name="InventorySnapshotForBottle" positionX="-1980" positionY="-2743" width="128" height="88"/>
+        <element name="Order" positionX="-1901" positionY="-3142" width="128" height="103"/>
+        <element name="OrderForBottle" positionX="-1883" positionY="-2974" width="128" height="103"/>
+        <element name="Vendor" positionX="-1692" positionY="-3141" width="128" height="88"/>
+    </elements>
+</model>
