@@ -1,5 +1,7 @@
 [
- {"name": "Gnarley Head", "subType": "Cabernet", "barcode": "0082242297530"},
- {"name": "Blue Moon", "subType": "Wheat", "barcode": "00878000000737"},
+ {"name": "Gnarley Head", "subType": "Red", "barcode": "0082242297530"},
+ {"name": "Blue Moon", "subType": "Wheat", "barcode": "00878000000737", "userHasBottle": "yes"},
  {"name": "Fat Tire", "subType": "Ale", "barcode": "0754527000219"},
+ {"name": "Pyramid", "subType": "Wheat", "barcode": "1231231", "userHasBottle": "yes"},
+ {"name": "Racer", "subType": "Wheat", "barcode": "545234245", "userHasBottle": "yes"}
  ]

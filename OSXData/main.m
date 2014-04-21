@@ -18,7 +18,7 @@ static NSManagedObjectModel *managedObjectModel()
         return model;
     }
     
-    NSString *path = @"Duck03";
+    NSString *path = @"Duck";
     NSURL *modelURL = [NSURL fileURLWithPath:[path stringByAppendingPathExtension:@"momd"]];
     model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
@@ -69,8 +69,6 @@ static void *enterTypes() {
                                                             options:kNilOptions
                                                               error:&err];
     
-    NSLog(@"Count of Types: %u", AlcoholTypes.count);
-    
     [AlcoholTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [AlcoholType newTypeForName:[obj objectForKey:@"name"] inManagedObjectContext:context];
         NSError *error;
@@ -80,16 +78,16 @@ static void *enterTypes() {
     }];
     
 
-    // list out the categories
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"AlcoholType"
-                                   inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-    for (AlcoholType *type in fetchedObjects) {
-        NSLog(@"Type Name: %@", type.name);
-    }
+    // list out the categories (FOR DEBEGGUING)
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription
+//                                   entityForName:@"AlcoholType"
+//                                   inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+//    for (AlcoholType *type in fetchedObjects) {
+//        NSLog(@"Type Created: %@", type.name);
+//    }
 }
 
 static void *enterSubTypes() {
@@ -103,7 +101,6 @@ static void *enterSubTypes() {
     NSArray* SubTypes = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
                                                         options:kNilOptions
                                                           error:&err];
-    NSLog(@"Count of SubTypes: %u", SubTypes.count);
     
     [SubTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         AlcoholSubType * subType = [AlcoholSubType newSubTypeFromName:[obj objectForKey:@"name"] inManagedObjectContext:context];
@@ -116,16 +113,15 @@ static void *enterSubTypes() {
     }];
     
     // list out the subTypes
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"AlcoholSubType"
-                                   inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-    for (AlcoholSubType *subType in fetchedObjects) {
-        NSLog(@"SubType Name: %@", subType.name);
-        NSLog(@"SubType Parent: %@", subType.parent.name);
-    }
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription
+//                                   entityForName:@"AlcoholSubType"
+//                                   inManagedObjectContext:context];
+//    [fetchRequest setEntity:entity];
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+//    for (AlcoholSubType *subType in fetchedObjects) {
+//        NSLog(@"SubType Created: %@", subType.name);
+//    }
 }
 
 static void *enterBottles() {
@@ -146,6 +142,14 @@ static void *enterBottles() {
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:subTypeName inManagedObjectContext:context];
         bottle.subType = subType;
         bottle.barcode = [obj objectForKey:@"barcode"];
+        NSNumber * userHasBottle;
+        NSString * hasBottle = [obj objectForKey:@"userHasBottle"];
+        if (hasBottle == [NSString stringWithFormat:@"yes"]) {
+            userHasBottle = [NSNumber numberWithBool:YES];
+        } else {
+            userHasBottle = [NSNumber numberWithBool:NO];
+        }
+        bottle.userHasBottle = userHasBottle;
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -160,7 +164,40 @@ static void *enterBottles() {
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
     for (Bottle *bottle in fetchedObjects) {
-        NSLog(@"Bottle name and barcode: %@, %@", bottle.name, bottle.barcode);
+        NSLog(@"Bottle Created: %@ and userHasBottle: %@", bottle.name, bottle.userHasBottle);
+    }
+}
+
+// Iterate through each subtype and set ordering for each bottle
+static void *enterUserOrdering() {
+    NSManagedObjectContext *context = managedObjectContext();
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"AlcoholSubType"
+                                   inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSError* err = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+    for (AlcoholSubType *alcSubType in fetchedObjects) {
+        // fetch all bottles and set ordering
+        NSLog(@"iterating over subType: %@", alcSubType.name);
+        NSFetchRequest * fetchRequestBottles = [[NSFetchRequest alloc] init];
+        NSEntityDescription * entityBottles = [NSEntityDescription entityForName:@"Bottle" inManagedObjectContext:context];
+        fetchRequestBottles.predicate = [NSPredicate predicateWithFormat:@"subType.name = %@", alcSubType.name];
+        [fetchRequestBottles setEntity:entityBottles];
+        NSError * errorBottles = nil;
+        NSArray * fetchedBottles = [context executeFetchRequest:fetchRequestBottles error:&errorBottles];
+        for (Bottle * bottle in fetchedBottles) {
+            NSUInteger index = [fetchedBottles indexOfObject:bottle];
+            int value = (int)index;
+            bottle.userOrdering = [NSNumber numberWithInt:value];
+            NSLog(@"Bottle name: %@, Bottle Order: %@", bottle.name, bottle.userOrdering);
+        }
+    }
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
 }
 
@@ -209,6 +246,8 @@ int main(int argc, const char * argv[])
         enterBottles();
         
         enterInventorySnapshots();
+        
+        enterUserOrdering();
         
     }
     return 0;
