@@ -8,6 +8,7 @@
 
 #import "Order.h"
 #import "OrderForBottle.h"
+#import "Vendor.h"
 
 
 @implementation Order

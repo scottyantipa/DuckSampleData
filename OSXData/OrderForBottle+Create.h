@@ -7,7 +7,7 @@
 //
 
 #import "OrderForBottle.h"
-#import "Order.h"
+#import "Order+Create.h"
 #import "Bottle+Create.h"
 
 @interface OrderForBottle (Create)

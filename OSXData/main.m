@@ -9,7 +9,7 @@
 #import "Bottle+Create.h"
 #import "AlcoholType+Create.h"
 #import "AlcoholSubType+Create.h"
-#import "InventorySnapshotForBottle+Create.h"
+//#import "InventorySnapshotForBottle+Create.h"
 
 static NSManagedObjectModel *managedObjectModel()
 {
@@ -57,7 +57,7 @@ static NSManagedObjectContext *managedObjectContext()
     return context;
 }
 
-
+// Put the major types in DB (e.g. 'Wine', 'Liquor', 'Beer')
 static void *enterTypes() {
     // create context
     NSManagedObjectContext *context = managedObjectContext();
@@ -132,25 +132,29 @@ static void *enterBottles() {
     //create the bottles and save them
     NSError* err = nil;
     NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"Bottles" ofType:@"json"];
-    NSArray * Bottles = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
+    NSDictionary * bottles = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
                                                        options:kNilOptions
                                                          error:&err];
-    
-    [Bottles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Bottle * bottle = [Bottle bottleForName:[obj objectForKey:@"name"] inManagedObjectContext:context];
-        NSString * subTypeName = [obj objectForKey:@"subType"];
-        AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:subTypeName inManagedObjectContext:context];
-        bottle.subType = subType;
-        bottle.barcode = [obj objectForKey:@"barcode"];
-        NSNumber * userHasBottle;
-        NSString * hasBottle = [obj objectForKey:@"userHasBottle"];
-        if (hasBottle == [NSString stringWithFormat:@"yes"]) {
-            userHasBottle = [NSNumber numberWithBool:YES];
-        } else {
-            userHasBottle = [NSNumber numberWithBool:NO];
+
+    [bottles enumerateKeysAndObjectsUsingBlock:^(id key, id record, BOOL *stop) {
+
+        // unpack all the info from the record
+        NSString * name = [record objectForKey:@"name"];
+        NSNumber * barcodeNum = [record objectForKey:@"barcode"];
+        NSString * barcode = [barcodeNum stringValue];
+        NSString * category = [record objectForKey:@"category"];
+        //        NSLog(@"name: %@ barcode %@ cateogry %@", name, barcode, category);
+        
+        // create the bottle and retrieve the subtype
+        Bottle * bottle = [Bottle bottleForName:name inManagedObjectContext:context];
+        AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:category inManagedObjectContext:context];
+        if (!subType) {
+            return; // don't add the bottle
         }
-        bottle.userHasBottle = userHasBottle;
-        NSError *error;
+        bottle.subType = subType;
+        bottle.barcode = barcode;
+        bottle.userHasBottle = [NSNumber numberWithBool:NO];
+        NSError *error; // save it
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
@@ -159,10 +163,10 @@ static void *enterBottles() {
 
 // Iterate through each subtype and set ordering for each bottle
 static void *enterUserOrdering() {
-    NSManagedObjectContext *context = managedObjectContext();
+    NSManagedObjectContext * context = managedObjectContext();
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription * entity = [NSEntityDescription
                                    entityForName:@"AlcoholSubType"
                                    inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
@@ -188,40 +192,41 @@ static void *enterUserOrdering() {
     }
 }
 
-static void *enterInventorySnapshots() {
-    NSManagedObjectContext *context = managedObjectContext();
-    NSError * err = nil;
-    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"InventorySnapshotsForBottle" ofType:@"json"];
-    NSArray * Snapshots = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
-                                                          options:kNilOptions
-                                                       error:&err];
-    [Snapshots enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        InventorySnapshotForBottle * snapShot = [NSEntityDescription insertNewObjectForEntityForName:@"InventorySnapshotForBottle" inManagedObjectContext:context];
-        Bottle * whichBottle = [Bottle bottleForName:[obj objectForKey:@"whichBottle"] inManagedObjectContext:context];
-        // there needs to be a safe gaurd here if this returns something empty
-        NSNumber * dateNum = [obj objectForKey:@"date"];
-        float floatNum = [dateNum floatValue];
-        NSDate * date = [NSDate dateWithTimeIntervalSince1970:floatNum];
-        
-        snapShot.date = date;
-        snapShot.whichBottle = whichBottle;
-        snapShot.count = [obj objectForKey:@"count"];
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-    }];
-}
+// only for testing, enters some default inventory snapshots
+//static void *enterInventorySnapshots() {
+//    NSManagedObjectContext *context = managedObjectContext();
+//    NSError * err = nil;
+//    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"InventorySnapshotsForBottle" ofType:@"json"];
+//    NSArray * Snapshots = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
+//                                                          options:kNilOptions
+//                                                       error:&err];
+//    [Snapshots enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        InventorySnapshotForBottle * snapShot = [NSEntityDescription insertNewObjectForEntityForName:@"InventorySnapshotForBottle" inManagedObjectContext:context];
+//        Bottle * whichBottle = [Bottle bottleForName:[obj objectForKey:@"whichBottle"] inManagedObjectContext:context];
+//        // there needs to be a safe gaurd here if this returns something empty
+//        NSNumber * dateNum = [obj objectForKey:@"date"];
+//        float floatNum = [dateNum floatValue];
+//        NSDate * date = [NSDate dateWithTimeIntervalSince1970:floatNum];
+//        
+//        snapShot.date = date;
+//        snapShot.whichBottle = whichBottle;
+//        snapShot.count = [obj objectForKey:@"count"];
+//        NSError *error;
+//        if (![context save:&error]) {
+//            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+//        }
+//    }];
+//}
 
-static void *printSnapShots() {
-    NSManagedObjectContext *context = managedObjectContext();
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InventorySnapshotForBottle"];
-    NSError *err;
-    NSArray * fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-    for (InventorySnapshotForBottle * snapshot in fetchedObjects) {
-        NSLog(@"snapshot for bottle: %@ with count: %@", snapshot.whichBottle.name, snapshot.count);
-    }
-}
+//static void *printSnapShots() {
+//    NSManagedObjectContext *context = managedObjectContext();
+//    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InventorySnapshotForBottle"];
+//    NSError *err;
+//    NSArray * fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+//    for (InventorySnapshotForBottle * snapshot in fetchedObjects) {
+//        NSLog(@"snapshot for bottle: %@ with count: %@", snapshot.whichBottle.name, snapshot.count);
+//    }
+//}
 
 static void *printBottles() {
     NSManagedObjectContext *context = managedObjectContext();
@@ -238,6 +243,23 @@ static void *printBottles() {
 }
 
 
+static void *printStoredBottles() {
+    // create context
+    NSManagedObjectContext *context = managedObjectContext();
+    
+    // list out the bottles
+    NSError *err; // save it
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Bottle"
+                                   inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+    for (Bottle *bottle in fetchedObjects) {
+        NSLog(@"Bottle: %@ for subType: %@:%@", bottle.name, bottle.subType.name, bottle.subType.parent.name);
+    }
+}
+
 int main(int argc, const char * argv[])
 {
 
@@ -249,11 +271,9 @@ int main(int argc, const char * argv[])
         
         enterBottles();
         
-        enterInventorySnapshots();
-        
         enterUserOrdering();
         
-        printBottles();
+        printStoredBottles();
         
     }
     return 0;
