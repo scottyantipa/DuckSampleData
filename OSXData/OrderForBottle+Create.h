@@ -7,10 +7,12 @@
 //
 
 #import "OrderForBottle.h"
-#import "Order+Create.h"
+#import "Order.h"
+#import "Bottle+Create.h"
 
 @interface OrderForBottle (Create)
 +(OrderForBottle *)newOrderForBottle:(Bottle *)bottle
                                 forOrder:(Order *)order
                   inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

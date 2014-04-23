@@ -36,7 +36,8 @@
     
     // if none were returned, then create one
     if ([fetchedObjects count] == 0) {
-        Bottle *newBottle = [Bottle newBottleForName:name inManagedObjectContext:context];
+        Bottle *newBottle = [Bottle newBlankBottleInContext:context];
+        newBottle.name = name;
         return newBottle;
     }
     else {
@@ -62,10 +63,9 @@
     NSError *err;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
     
-    // if none were returned, then create one
+    // if none were returned, return NO
     if ([fetchedObjects count] == 0) {
-        Bottle *newBottle = [Bottle newBottleForBarcode:barcode inManagedObjectContext:context];
-        return newBottle;
+        return NO;
     }
     else {
         Bottle *bottle = [fetchedObjects lastObject];
@@ -79,15 +79,10 @@
                       inManagedObjectContext:context];
     bottle.name = @"No Name";
     bottle.barcode = @"No Barcode";
-    // NOTE:  need to make a new InventorySnapshot of 0 for it
-    return bottle;
-}
-
-+(Bottle *)newBottleForName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context
-{
-    Bottle *bottle = [Bottle newBlankBottleInContext:context];
-    if (name) {
-        bottle.name = name;
+    [InventorySnapshotForBottle newInventoryForBottleSnapshotForDate:[NSDate date] withCount:(NSNumber *)0 forBottle:bottle inManagedObjectContext:context];
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     return bottle;
 }
@@ -98,6 +93,27 @@
         bottle.barcode = barcode;
     }
     return bottle;
+}
++(OrderForBottle *)mostRecentOrderForBottle:(Bottle *)bottle inContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OrderForBottle" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"whichBottle.name = %@", bottle.name];
+    [fetchRequest setPredicate:predicate];
+    
+    NSSortDescriptor * sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"whichOrder.date" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // We only want the most recent one
+    [fetchRequest setFetchBatchSize:1];
+    
+    NSError * err = nil;
+    NSArray * fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+    OrderForBottle * orderForBottle = [fetchedObjects lastObject];
+    
+    return orderForBottle;
 }
 
 @end

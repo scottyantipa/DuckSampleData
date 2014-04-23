@@ -52,4 +52,80 @@
     return subType;
 }
 
++(void)recalculateUserOrderingForSubType:(AlcoholSubType *)subType inContext:(NSManagedObjectContext *)context {
+    NSString * subTypeName = subType.name;
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Bottle"];
+    
+    // Completely recalculate the userOrdering for all bottles (there may be gaps if a user removed/added a bottle)
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"subType.name = %@", subTypeName];
+    NSSortDescriptor * sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"userHasBottle" ascending:NO];
+    NSSortDescriptor * sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"userOrdering" ascending:YES];
+    NSSortDescriptor * sortDescriptor3 = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray * sortDescriptors = @[sortDescriptor1, sortDescriptor2, sortDescriptor3];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSError *err;
+    NSArray * fetchedBottles = [context executeFetchRequest:fetchRequest error:&err];
+    
+    for (Bottle * bottle in fetchedBottles) {
+        NSUInteger index = [fetchedBottles indexOfObject:bottle];
+        int indexInt = (int)index;
+        bottle.userOrdering = [NSNumber numberWithInt:indexInt];
+    }
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
+
++(void)changeBottle:(Bottle *)bottle toSubType:(AlcoholSubType *)subType inContext:(NSManagedObjectContext *)context {
+    bottle.subType = subType;
+    NSArray * fetchedBottles = [AlcoholSubType fetchedBottlesForSubType:bottle.subType inContext:context];
+    bottle.userHasBottle = [NSNumber numberWithBool:YES];
+    NSUInteger newOrder = [fetchedBottles count];
+    int newOrderInt = (int)newOrder;
+    bottle.userOrdering = [NSNumber numberWithInteger:(newOrderInt)];
+}
+
++(void)changeOrderOfBottle:(Bottle *)bottle toNumber:(NSNumber *)number inContext:(NSManagedObjectContext *)context {
+    int oldOrder = [bottle.userOrdering intValue];
+    int newOrder = [number intValue];
+    bottle.userOrdering = number;
+    
+    // iterate over the other bottles and update their user ordrering
+    NSArray * fetchedBottles = [AlcoholSubType fetchedBottlesForSubType:bottle.subType inContext:context];
+    for (Bottle * otherBottle in fetchedBottles) {
+        if (otherBottle.name == bottle.name) { // its the bottle we already moved
+            continue;
+        }
+        int oldOrderForOtherBottle = [otherBottle.userOrdering intValue];
+        NSNumber * newOrderForOtherBottle;
+        if ((oldOrder < oldOrderForOtherBottle) & (newOrder >= oldOrderForOtherBottle)) { // bottle was before, now is after
+            newOrderForOtherBottle = [NSNumber numberWithInt:(oldOrderForOtherBottle - 1)];
+        } else if ((oldOrder > oldOrderForOtherBottle) & (newOrder <= oldOrderForOtherBottle)) {   // bottle was after, now is before
+            newOrderForOtherBottle = [NSNumber numberWithInt:(oldOrderForOtherBottle + 1)];
+        } else {
+            continue; // don't change the ordering
+        }
+        otherBottle.userOrdering = newOrderForOtherBottle;
+    }
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
+
++(NSArray *)fetchedBottlesForSubType:(AlcoholSubType *)subType inContext:(NSManagedObjectContext *)context {
+    NSString * subTypeName = subType.name;
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Bottle"];
+    
+    // Fetch the bottles that the user has.  We will adjust their userOrdering when the user
+    // adds/removes a bottle
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(subType.name = %@) AND (self.userHasBottle = %@)", subTypeName, [NSNumber numberWithBool:YES]];
+    NSSortDescriptor * sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"userOrdering" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSError *err;
+    return [context executeFetchRequest:fetchRequest error:&err];
+}
+
 @end

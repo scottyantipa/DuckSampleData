@@ -11,14 +11,14 @@
 
 @implementation InventorySnapshotForBottle (Create)
 +(InventorySnapshotForBottle *)newInventoryForBottleSnapshotForDate:(NSDate *)date
-                                                          withCount:(float *)count
+                                                          withCount:(NSNumber *)count
                                                           forBottle:(Bottle *)bottle
                                              inManagedObjectContext:(NSManagedObjectContext *)context
 {
     InventorySnapshotForBottle * snapShot = [NSEntityDescription insertNewObjectForEntityForName:@"InventorySnapshotForBottle" inManagedObjectContext:context];
     snapShot.date = date;
     snapShot.whichBottle = bottle;
-    snapShot.count = [NSNumber numberWithFloat:*count];
+    snapShot.count = count;
     return snapShot;
 }
 

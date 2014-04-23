@@ -137,7 +137,7 @@ static void *enterBottles() {
                                                          error:&err];
     
     [Bottles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Bottle * bottle = [Bottle newBottleForName:[obj objectForKey:@"name"] inManagedObjectContext:context];
+        Bottle * bottle = [Bottle bottleForName:[obj objectForKey:@"name"] inManagedObjectContext:context];
         NSString * subTypeName = [obj objectForKey:@"subType"];
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:subTypeName inManagedObjectContext:context];
         bottle.subType = subType;

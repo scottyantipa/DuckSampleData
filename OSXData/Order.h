@@ -1,22 +1,24 @@
 //
 //  Order.h
-//  Duck03
+//  Duck
 //
-//  Created by Scott Antipa on 9/17/13.
-//  Copyright (c) 2013 Scott Antipa. All rights reserved.
+//  Created by Scott Antipa on 4/23/14.
+//  Copyright (c) 2014 Scott Antipa. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class OrderForBottle;
+@class OrderForBottle, Vendor;
 
 @interface Order : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * arrived;
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSNumber * sent;
 @property (nonatomic, retain) NSNumber * totalAmount;
 @property (nonatomic, retain) NSSet *ordersByBottle;
-@property (nonatomic, retain) NSManagedObject *whichVendor;
+@property (nonatomic, retain) Vendor *whichVendor;
 @end
 
 @interface Order (CoreDataGeneratedAccessors)

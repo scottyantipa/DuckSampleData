@@ -10,7 +10,7 @@
 
 @interface InventorySnapshotForBottle (Create)
 +(InventorySnapshotForBottle *)newInventoryForBottleSnapshotForDate:(NSDate *)date
-                                                          withCount:(float *)count
+                                                          withCount:(NSNumber *)count
                                                           forBottle:(Bottle *)bottle
                                              inManagedObjectContext:(NSManagedObjectContext *)context;
 @end

@@ -1,9 +1,9 @@
 //
 //  OrderForBottle.h
-//  Duck03
+//  Duck
 //
-//  Created by Scott Antipa on 9/17/13.
-//  Copyright (c) 2013 Scott Antipa. All rights reserved.
+//  Created by Scott Antipa on 4/23/14.
+//  Copyright (c) 2014 Scott Antipa. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,9 @@
 //
 //  Order.m
-//  Duck03
+//  Duck
 //
-//  Created by Scott Antipa on 9/17/13.
-//  Copyright (c) 2013 Scott Antipa. All rights reserved.
+//  Created by Scott Antipa on 4/23/14.
+//  Copyright (c) 2014 Scott Antipa. All rights reserved.
 //
 
 #import "Order.h"
@@ -12,7 +12,9 @@
 
 @implementation Order
 
+@dynamic arrived;
 @dynamic date;
+@dynamic sent;
 @dynamic totalAmount;
 @dynamic ordersByBottle;
 @dynamic whichVendor;
