@@ -30,16 +30,13 @@
     NSError *err;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
     
-    // if none were returned, then create one
     if ([fetchedObjects count] == 0) {
-        AlcoholSubType *newSubType = [AlcoholSubType newSubTypeFromName:@"New Bottle" inManagedObjectContext:context];
-        return newSubType;
+        return NULL;
     }
     else {
         AlcoholSubType *subType = [fetchedObjects lastObject];
         return subType;
     }
-    
 }
 
 +(AlcoholSubType *)newSubTypeFromName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context

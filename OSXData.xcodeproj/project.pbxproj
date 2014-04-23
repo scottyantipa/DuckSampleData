@@ -12,6 +12,7 @@
 		E02301E017C952820086E6B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E02301DF17C952820086E6B2 /* main.m */; };
 		E02301E717C952820086E6B2 /* OSXData.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301E617C952820086E6B2 /* OSXData.1 */; };
 		E02301FD17C954A40086E6B2 /* AlcoholSubTypes.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */; };
+		E024A4B719075968003A80DB /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E024A4B519075968003A80DB /* Duck.xcdatamodeld */; };
 		E042766618135769005E23F0 /* Bottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E042765018135769005E23F0 /* Bottle+Create.m */; };
 		E042766718135769005E23F0 /* AlcoholType.m in Sources */ = {isa = PBXBuildFile; fileRef = E042765218135769005E23F0 /* AlcoholType.m */; };
 		E042766818135769005E23F0 /* AlcoholType+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E042765418135769005E23F0 /* AlcoholType+Create.m */; };
@@ -27,7 +28,6 @@
 		E0427673181359D7005E23F0 /* AlcoholTypes.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */; };
 		E0427674181359E0005E23F0 /* Bottles.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FB17C9547F0086E6B2 /* Bottles.json */; };
 		E0A4F8BA1839AAB5000CA0C6 /* Bottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A4F8B91839AAB5000CA0C6 /* Bottle.m */; };
-		E0C5A5611849AC25008E9B94 /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0C5A55F1849AC25008E9B94 /* Duck.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +66,7 @@
 		E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AlcoholSubTypes.json; sourceTree = "<group>"; };
 		E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AlcoholTypes.json; sourceTree = "<group>"; };
 		E02301FB17C9547F0086E6B2 /* Bottles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bottles.json; sourceTree = "<group>"; };
+		E024A4B619075968003A80DB /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 		E042764F18135769005E23F0 /* Bottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bottle+Create.h"; sourceTree = "<group>"; };
 		E042765018135769005E23F0 /* Bottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bottle+Create.m"; sourceTree = "<group>"; };
 		E042765118135769005E23F0 /* AlcoholType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlcoholType.h; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		E042767118135996005E23F0 /* InventorySnapshotsForBottle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InventorySnapshotsForBottle.json; sourceTree = "<group>"; };
 		E0A4F8B81839AAB5000CA0C6 /* Bottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bottle.h; sourceTree = "<group>"; };
 		E0A4F8B91839AAB5000CA0C6 /* Bottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bottle.m; sourceTree = "<group>"; };
-		E0C5A5601849AC25008E9B94 /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		E02301DE17C952820086E6B2 /* OSXData */ = {
 			isa = PBXGroup;
 			children = (
-				E0C5A55F1849AC25008E9B94 /* Duck.xcdatamodeld */,
+				E024A4B519075968003A80DB /* Duck.xcdatamodeld */,
 				E02301DF17C952820086E6B2 /* main.m */,
 				E0A4F8B81839AAB5000CA0C6 /* Bottle.h */,
 				E0A4F8B91839AAB5000CA0C6 /* Bottle.m */,
@@ -207,7 +207,7 @@
 		E02301CF17C952820086E6B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Scott Antipa";
 			};
 			buildConfigurationList = E02301D217C952820086E6B2 /* Build configuration list for PBXProject "OSXData" */;
@@ -240,7 +240,7 @@
 				E042766E18135769005E23F0 /* OrderForBottle+Create.m in Sources */,
 				E042766818135769005E23F0 /* AlcoholType+Create.m in Sources */,
 				E042766618135769005E23F0 /* Bottle+Create.m in Sources */,
-				E0C5A5611849AC25008E9B94 /* Duck.xcdatamodeld in Sources */,
+				E024A4B719075968003A80DB /* Duck.xcdatamodeld in Sources */,
 				E042766D18135769005E23F0 /* OrderForBottle.m in Sources */,
 				E042766F18135769005E23F0 /* InventorySnapshotForBottle.m in Sources */,
 				E0A4F8BA1839AAB5000CA0C6 /* Bottle.m in Sources */,
@@ -256,7 +256,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -289,7 +288,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -353,14 +351,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E0C5A55F1849AC25008E9B94 /* Duck.xcdatamodeld */ = {
+		E024A4B519075968003A80DB /* Duck.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E0C5A5601849AC25008E9B94 /* Duck.xcdatamodel */,
+				E024A4B619075968003A80DB /* Duck.xcdatamodel */,
 			);
-			currentVersion = E0C5A5601849AC25008E9B94 /* Duck.xcdatamodel */;
-			name = Duck.xcdatamodeld;
-			path = ../../DuckiPhone/Duck/Duck.xcdatamodeld;
+			currentVersion = E024A4B619075968003A80DB /* Duck.xcdatamodel */;
+			path = Duck.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
