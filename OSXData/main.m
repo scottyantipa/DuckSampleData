@@ -155,17 +155,6 @@ static void *enterBottles() {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
     }];
-    
-    // list out the bottles
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Bottle"
-                                   inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-    for (Bottle *bottle in fetchedObjects) {
-        NSLog(@"Bottle Created: %@ and userHasBottle: %@", bottle.name, bottle.userHasBottle);
-    }
 }
 
 // Iterate through each subtype and set ordering for each bottle
@@ -181,7 +170,6 @@ static void *enterUserOrdering() {
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
     for (AlcoholSubType *alcSubType in fetchedObjects) {
         // fetch all bottles and set ordering
-        NSLog(@"iterating over subType: %@", alcSubType.name);
         NSFetchRequest * fetchRequestBottles = [[NSFetchRequest alloc] init];
         NSEntityDescription * entityBottles = [NSEntityDescription entityForName:@"Bottle" inManagedObjectContext:context];
         fetchRequestBottles.predicate = [NSPredicate predicateWithFormat:@"subType.name = %@", alcSubType.name];
@@ -192,7 +180,6 @@ static void *enterUserOrdering() {
             NSUInteger index = [fetchedBottles indexOfObject:bottle];
             int value = (int)index;
             bottle.userOrdering = [NSNumber numberWithInt:value];
-            NSLog(@"Bottle name: %@, Bottle Order: %@", bottle.name, bottle.userOrdering);
         }
     }
     NSError *error;
@@ -224,12 +211,29 @@ static void *enterInventorySnapshots() {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
     }];
-    
-    // list out the snapshots
+}
+
+static void *printSnapShots() {
+    NSManagedObjectContext *context = managedObjectContext();
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InventorySnapshotForBottle"];
+    NSError *err;
     NSArray * fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
     for (InventorySnapshotForBottle * snapshot in fetchedObjects) {
         NSLog(@"snapshot for bottle: %@ with count: %@", snapshot.whichBottle.name, snapshot.count);
+    }
+}
+
+static void *printBottles() {
+    NSManagedObjectContext *context = managedObjectContext();
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Bottle"
+                                   inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSError *err;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+    for (Bottle *bottle in fetchedObjects) {
+        NSLog(@"Bottle fetched: %@", bottle.name);
     }
 }
 
@@ -248,6 +252,8 @@ int main(int argc, const char * argv[])
         enterInventorySnapshots();
         
         enterUserOrdering();
+        
+        printBottles();
         
     }
     return 0;
