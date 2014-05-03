@@ -2,14 +2,14 @@
 //  Order.h
 //  Duck
 //
-//  Created by Scott Antipa on 4/23/14.
+//  Created by Scott Antipa on 5/3/14.
 //  Copyright (c) 2014 Scott Antipa. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class OrderForBottle, Vendor;
+@class Invoice, OrderForBottle, Vendor;
 
 @interface Order : NSManagedObject
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * totalAmount;
 @property (nonatomic, retain) NSSet *ordersByBottle;
 @property (nonatomic, retain) Vendor *whichVendor;
+@property (nonatomic, retain) Invoice *invoice;
 @end
 
 @interface Order (CoreDataGeneratedAccessors)
