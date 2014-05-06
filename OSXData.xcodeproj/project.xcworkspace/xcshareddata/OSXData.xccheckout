@@ -12,6 +12,8 @@
 	<dict>
 		<key>1DF9BB1B-3769-4E41-8B69-B8353B54A641</key>
 		<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
+		<key>546D6C0B-53FE-4CE6-8321-1C6CBBA3D90A</key>
+		<string>https://github.com/ldiqual/tesseract-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OSXData.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>1DF9BB1B-3769-4E41-8B69-B8353B54A641</key>
 		<string>../..</string>
+		<key>546D6C0B-53FE-4CE6-8321-1C6CBBA3D90A</key>
+		<string>../../../DuckiPhone/Duck</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
@@ -28,6 +32,14 @@
 	<string>1DF9BB1B-3769-4E41-8B69-B8353B54A641</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>546D6C0B-53FE-4CE6-8321-1C6CBBA3D90A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Duck</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

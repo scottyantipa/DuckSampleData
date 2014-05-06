@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E00ABBD819154DCE00D6BF17 /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E00ABBD619154DCE00D6BF17 /* Duck.xcdatamodeld */; };
 		E02301DB17C952820086E6B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02301DA17C952820086E6B2 /* CoreData.framework */; };
 		E02301DD17C952820086E6B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02301DC17C952820086E6B2 /* Foundation.framework */; };
 		E02301E017C952820086E6B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E02301DF17C952820086E6B2 /* main.m */; };
@@ -28,6 +27,7 @@
 		E09204F419082F1C005E7421 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F119082F1C005E7421 /* Order.m */; };
 		E09204F519082F1C005E7421 /* Order+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F319082F1C005E7421 /* Order+Create.m */; };
 		E09204FA19082F36005E7421 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F719082F36005E7421 /* Vendor.m */; };
+		E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0E83AEF19189D170096233A /* Duck.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +56,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E00ABBD719154DCE00D6BF17 /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 		E02301D717C952820086E6B2 /* OSXData */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OSXData; sourceTree = BUILT_PRODUCTS_DIR; };
 		E02301DA17C952820086E6B2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E02301DC17C952820086E6B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +91,7 @@
 		E09204F319082F1C005E7421 /* Order+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Order+Create.m"; sourceTree = "<group>"; };
 		E09204F619082F36005E7421 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
 		E09204F719082F36005E7421 /* Vendor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
+		E0E83AF019189D170096233A /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		E02301DE17C952820086E6B2 /* OSXData */ = {
 			isa = PBXGroup;
 			children = (
-				E00ABBD619154DCE00D6BF17 /* Duck.xcdatamodeld */,
+				E0E83AEF19189D170096233A /* Duck.xcdatamodeld */,
 				E02301DF17C952820086E6B2 /* main.m */,
 				E09204D219082DF6005E7421 /* AlcoholSubType.h */,
 				E09204D319082DF6005E7421 /* AlcoholSubType.m */,
@@ -240,7 +240,7 @@
 				E09204DE19082DF6005E7421 /* AlcoholSubType.m in Sources */,
 				E09204EF19082EFE005E7421 /* OrderForBottle+Create.m in Sources */,
 				E09204E319082DF6005E7421 /* Bottle+Create.m in Sources */,
-				E00ABBD819154DCE00D6BF17 /* Duck.xcdatamodeld in Sources */,
+				E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */,
 				E09204F419082F1C005E7421 /* Order.m in Sources */,
 				E09204E119082DF6005E7421 /* AlcoholType+Create.m in Sources */,
 				E09204EE19082EFE005E7421 /* OrderForBottle.m in Sources */,
@@ -353,13 +353,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E00ABBD619154DCE00D6BF17 /* Duck.xcdatamodeld */ = {
+		E0E83AEF19189D170096233A /* Duck.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E00ABBD719154DCE00D6BF17 /* Duck.xcdatamodel */,
+				E0E83AF019189D170096233A /* Duck.xcdatamodel */,
 			);
-			currentVersion = E00ABBD719154DCE00D6BF17 /* Duck.xcdatamodel */;
-			path = Duck.xcdatamodeld;
+			currentVersion = E0E83AF019189D170096233A /* Duck.xcdatamodel */;
+			name = Duck.xcdatamodeld;
+			path = ../../DuckiPhone/Duck/Duck.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
