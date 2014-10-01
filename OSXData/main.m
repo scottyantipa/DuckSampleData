@@ -146,13 +146,13 @@ static void *enterBottles() {
         //        NSLog(@"name: %@ barcode %@ cateogry %@", name, barcode, category);
         
         // create the bottle and retrieve the subtype
-        Bottle * bottle = [Bottle bottleForName:name inManagedObjectContext:context];
+        Bottle * bottle = [Bottle newBottleForBarcode:barcode inManagedObjectContext:context];
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:category inManagedObjectContext:context];
         if (!subType) {
             return; // don't add the bottle
         }
         bottle.subType = subType;
-        bottle.barcode = barcode;
+        bottle.name = name;
         bottle.userHasBottle = [NSNumber numberWithBool:NO];
         NSError *error; // save it
         if (![context save:&error]) {

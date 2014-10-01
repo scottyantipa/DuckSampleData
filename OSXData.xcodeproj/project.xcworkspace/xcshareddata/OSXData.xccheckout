@@ -14,6 +14,8 @@
 		<string>https://github.com/ldiqual/tesseract-ios.git</string>
 		<key>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</key>
 		<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
+		<key>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</key>
+		<string>https://github.com/thetron/StringScore.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OSXData.xcodeproj/project.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../../../DuckiPhone/Duck</string>
 		<key>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</key>
 		<string>../..</string>
+		<key>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</key>
+		<string>../../../DuckiPhone/Duck/StringScore</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
@@ -47,6 +51,14 @@
 			<string>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DuckSampleData</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>StringScore</string>
 		</dict>
 	</array>
 </dict>
