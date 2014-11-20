@@ -13,10 +13,10 @@
 		<key>3AD94AD89E354EA6EB1F558FB495B1217F664761</key>
 		<string>https://github.com/ldiqual/tesseract-ios.git</string>
 		<key>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</key>
-		<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
+		<string>github.com:scottyantipa/DuckSampleData.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OSXData.xcodeproj/project.xcworkspace</string>
+	<string>OSXData.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3AD94AD89E354EA6EB1F558FB495B1217F664761</key>
@@ -25,7 +25,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/scottyantipa/DuckSampleData.git</string>
+	<string>github.com:scottyantipa/DuckSampleData.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
