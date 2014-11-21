@@ -4,6 +4,7 @@
   {"name": "Lager", "parentType": "Beer"},
   {"name": "Light", "parentType": "Beer"},
   {"name": "Wheat", "parentType": "Beer"},
+  {"name": "Misc", "parentType": "Beer"},
   {"name": "Red", "parentType": "Wine"},
   {"name": "White", "parentType": "Wine"},
   {"name": "Dessert", "parentType": "Wine"},
@@ -13,4 +14,5 @@
   {"name": "Rum", "parentType": "Liquor"},
   {"name": "Whiskey", "parentType": "Liquor"},
   {"name": "Gin", "parentType": "Liquor"},
+  {"name": "Misc", "parentType": "Liquor"},
 ]

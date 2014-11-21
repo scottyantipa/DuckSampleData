@@ -1,0 +1,20 @@
+ [
+  {"name": "Barbera", "subType": "Red"},
+  {"name": "Shiraz", "subType": "Red"},
+  {"name": "Merlot", "subType": "Red"},
+  {"name": "Cabernet Sauvignon", "subType": "Red"},
+  {"name": "Petite Sirah", "subType": "Red"},
+  {"name": "Pinot Noir", "subType": "Red"},
+  {"name": "Zinfandel", "subType": "Red"},
+  
+  {"name": "Sparkling Wine", "subType": "White"},
+  {"name": "Chardonnay", "subType": "White"},
+  {"name": "Pinot Grigio", "subType": "White"},
+  {"name": "Sauvignon Blanc", "subType": "White"},
+
+  {"name": "Riesling", "subType": "Dessert"},
+  {"name": "Vouvray", "subType": "Dessert"},
+  {"name": "Port", "subType": "Dessert"},
+  {"name": "Chenin Blanc", "subType": "Dessert"},
+  {"name": "Rose", "subType": "Dessert"},
+]

@@ -15,7 +15,7 @@
  },
  "535548bc0876eb6564aa2813": {
  "_id": "535548bc0876eb6564aa2813",
- "name": " Blue Moon",
+ "name": "Blue Moon",
  "barcode": 878000000737,
  "category": "Wheat",
  "__v": 0
@@ -32,6 +32,7 @@
  "name": "Gnarley Head",
  "barcode": 82242294935,
  "category": "Red",
+ "varietal": "Cabernet Sauvignon",
  "__v": 0
  },
  "53554ff80876eb6564aa281f": {

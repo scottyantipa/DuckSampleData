@@ -30,6 +30,7 @@
 		E02E824A1A1EB3D50043BB09 /* OrderForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82491A1EB3D50043BB09 /* OrderForBottle.m */; };
 		E02E824D1A1EB3F20043BB09 /* AlcoholType.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824C1A1EB3F20043BB09 /* AlcoholType.m */; };
 		E02E82501A1EB6E00043BB09 /* BeerBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824F1A1EB6E00043BB09 /* BeerBottle.m */; };
+		E02E82581A1EEB870043BB09 /* Varietals.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02E82571A1EEB670043BB09 /* Varietals.json */; };
 		E0427673181359D7005E23F0 /* AlcoholTypes.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */; };
 		E0427674181359E0005E23F0 /* Bottles.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FB17C9547F0086E6B2 /* Bottles.json */; };
 		E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0E83AEF19189D170096233A /* Duck.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				E02E82581A1EEB870043BB09 /* Varietals.json in CopyFiles */,
 				E0427674181359E0005E23F0 /* Bottles.json in CopyFiles */,
 				E0427673181359D7005E23F0 /* AlcoholTypes.json in CopyFiles */,
 				E02301FD17C954A40086E6B2 /* AlcoholSubTypes.json in CopyFiles */,
@@ -106,6 +108,7 @@
 		E02E824C1A1EB3F20043BB09 /* AlcoholType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlcoholType.m; path = ../../DuckiPhone/Duck/AlcoholType.m; sourceTree = "<group>"; };
 		E02E824E1A1EB6E00043BB09 /* BeerBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeerBottle.h; path = ../../DuckiPhone/Duck/BeerBottle.h; sourceTree = "<group>"; };
 		E02E824F1A1EB6E00043BB09 /* BeerBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeerBottle.m; path = ../../DuckiPhone/Duck/BeerBottle.m; sourceTree = "<group>"; };
+		E02E82571A1EEB670043BB09 /* Varietals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Varietals.json; sourceTree = "<group>"; };
 		E0E83AF019189D170096233A /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +160,7 @@
 				E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */,
 				E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */,
 				E02301FB17C9547F0086E6B2 /* Bottles.json */,
+				E02E82571A1EEB670043BB09 /* Varietals.json */,
 				E02301E617C952820086E6B2 /* OSXData.1 */,
 				E02301E117C952820086E6B2 /* Supporting Files */,
 			);

@@ -12,8 +12,12 @@
 	<dict>
 		<key>3AD94AD89E354EA6EB1F558FB495B1217F664761</key>
 		<string>https://github.com/ldiqual/tesseract-ios.git</string>
+		<key>745738A1ED419F62D1B3EE3968F699A51D0BA5B9</key>
+		<string>github.com:scottyantipa/DuckiPhone.git</string>
 		<key>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</key>
 		<string>github.com:scottyantipa/DuckSampleData.git</string>
+		<key>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</key>
+		<string>https://github.com/thetron/StringScore.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OSXData.xcodeproj</string>
@@ -21,8 +25,12 @@
 	<dict>
 		<key>3AD94AD89E354EA6EB1F558FB495B1217F664761</key>
 		<string>../../../DuckiPhone/Duck</string>
+		<key>745738A1ED419F62D1B3EE3968F699A51D0BA5B9</key>
+		<string>../../../DuckiPhone</string>
 		<key>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</key>
 		<string>../..</string>
+		<key>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</key>
+		<string>../../../DuckiPhone/Duck/StringScore</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:scottyantipa/DuckSampleData.git</string>
@@ -44,9 +52,25 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>745738A1ED419F62D1B3EE3968F699A51D0BA5B9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DuckiPhone</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>C2E00EEFF91B96C4EBAFC71E065F0DA10BF0B3D8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DuckSampleData</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E24247BEF32EEF08CD1DB7BF27E5CF2C1C8612A7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>StringScore</string>
 		</dict>
 	</array>
 </dict>

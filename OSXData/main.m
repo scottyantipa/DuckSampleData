@@ -124,6 +124,38 @@ static void *enterSubTypes() {
 //    }
 }
 
+static void *enterVarietals() {
+    // create context
+    NSManagedObjectContext *context = managedObjectContext();
+    
+    
+    //create the bottles and save them
+    NSError* err = nil;
+    NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"Varietals" ofType:@"json"];
+    NSArray* SubTypes = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
+                                                        options:kNilOptions
+                                                          error:&err];
+    
+    [SubTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString * subTypeName = [obj objectForKey:@"subType"];
+        NSString * name = [obj objectForKey:@"name"];
+        if (subTypeName == nil || [subTypeName isEqualToString:@""] || name == nil || [name isEqualToString:@""]) {
+            return;
+        }
+        AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:subTypeName inManagedObjectContext:context];
+        if (subType == nil) {
+            return;
+        }
+        Varietal * varietal = [AlcoholSubType newVarietalForSubType:subType inContext:context];
+        varietal.name = name;
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }];
+    
+}
+
 static void *enterBottles() {
     // create context
     NSManagedObjectContext *context = managedObjectContext();
@@ -245,6 +277,23 @@ static void *printStoredBottles() {
     }
 }
 
+static void *printVarietals() {
+    // create context
+    NSManagedObjectContext *context = managedObjectContext();
+    
+    // list out the bottles
+    NSError *err; // save it
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Varietal"
+                                   inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
+    for (Varietal * varietal in fetchedObjects) {
+        NSLog(@"VARIETAL %@ for SUBTYPE: %@", varietal.name, varietal.subType.name);
+    }
+}
+
 int main(int argc, const char * argv[])
 {
 
@@ -253,12 +302,16 @@ int main(int argc, const char * argv[])
         enterTypes();
         
         enterSubTypes();
+
+        enterVarietals();
         
         enterBottles();
         
         enterUserOrdering();
         
         printStoredBottles();
+        
+        printVarietals();
         
     }
     return 0;
