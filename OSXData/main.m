@@ -143,17 +143,17 @@ static void *enterBottles() {
         NSNumber * barcodeNum = [record objectForKey:@"barcode"];
         NSString * barcode = [barcodeNum stringValue];
         NSString * category = [record objectForKey:@"category"];
-        //        NSLog(@"name: %@ barcode %@ cateogry %@", name, barcode, category);
         
         // create the bottle and retrieve the subtype
-        Bottle * bottle = [Bottle bottleForName:name inManagedObjectContext:context];
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:category inManagedObjectContext:context];
-        if (!subType) {
+        if (!subType || !category) {
             return; // don't add the bottle
         }
-        bottle.subType = subType;
+        Bottle * bottle = [Bottle newBottleForType:subType.parent inManagedObjectContext:context];
         bottle.barcode = barcode;
+        bottle.name = name;
         bottle.userHasBottle = [NSNumber numberWithBool:NO];
+        bottle.subType = subType;
         NSError *error; // save it
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -227,21 +227,6 @@ static void *enterUserOrdering() {
 //        NSLog(@"snapshot for bottle: %@ with count: %@", snapshot.whichBottle.name, snapshot.count);
 //    }
 //}
-
-static void *printBottles() {
-    NSManagedObjectContext *context = managedObjectContext();
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Bottle"
-                                   inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSError *err;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-    for (Bottle *bottle in fetchedObjects) {
-        NSLog(@"Bottle fetched: %@", bottle.name);
-    }
-}
-
 
 static void *printStoredBottles() {
     // create context

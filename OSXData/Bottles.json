@@ -241,14 +241,12 @@
  "_id": "535561f10876eb6564aa2888",
  "name": "Patron Anejo 1.75L",
  "barcode": 721733000906,
- "category": "(null)",
  "__v": 0
  },
  "535562460876eb6564aa288a": {
  "_id": "535562460876eb6564aa288a",
  "name": "Cazadores 750ml",
  "barcode": 80480170011,
- "category": "(null)",
  "__v": 0
  },
  "535562830876eb6564aa288d": {
@@ -402,7 +400,6 @@
  "_id": "5355853c0876eb6564aa2a1f",
  "name": "No Name",
  "barcode": 70897011212,
- "category": "(null)",
  "__v": 0
  },
  "53556f1c0876eb6564aa28ba": {
@@ -619,7 +616,6 @@
  "_id": "5355753f0876eb6564aa2914",
  "name": "KetelOne Citreon 750ml",
  "barcode": 85156007509,
- "category": "(null)",
  "__v": 0
  },
  "5355756c0876eb6564aa2917": {
@@ -1011,7 +1007,6 @@
  "_id": "5355814d0876eb6564aa29cd",
  "name": "Longboard Island Lager",
  "barcode": 796030214943,
- "category": "(null)",
  "__v": 0
  },
  "5355816a0876eb6564aa29d0": {

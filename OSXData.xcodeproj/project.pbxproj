@@ -12,21 +12,26 @@
 		E02301E017C952820086E6B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E02301DF17C952820086E6B2 /* main.m */; };
 		E02301E717C952820086E6B2 /* OSXData.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301E617C952820086E6B2 /* OSXData.1 */; };
 		E02301FD17C954A40086E6B2 /* AlcoholSubTypes.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */; };
+		E02E82121A1EACD00043BB09 /* AlcoholSubType+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E820F1A1EACD00043BB09 /* AlcoholSubType+Create.m */; };
+		E02E82131A1EACD00043BB09 /* AlcoholType+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82111A1EACD00043BB09 /* AlcoholType+Create.m */; };
+		E02E82161A1EACDD0043BB09 /* Bottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82151A1EACDD0043BB09 /* Bottle+Create.m */; };
+		E02E82191A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82181A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.m */; };
+		E02E821F1A1EAD3D0043BB09 /* InvoiceForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E821D1A1EAD3D0043BB09 /* InvoiceForBottle.m */; };
+		E02E82221A1EAD570043BB09 /* LiquorBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82211A1EAD570043BB09 /* LiquorBottle.m */; };
+		E02E82281A1EAD7C0043BB09 /* OrderForBottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82271A1EAD7C0043BB09 /* OrderForBottle+Create.m */; };
+		E02E82331A1EAD9F0043BB09 /* Varietal.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E822A1A1EAD9F0043BB09 /* Varietal.m */; };
+		E02E82341A1EAD9F0043BB09 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E822C1A1EAD9F0043BB09 /* Vendor.m */; };
+		E02E82361A1EAD9F0043BB09 /* Vineyard.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82301A1EAD9F0043BB09 /* Vineyard.m */; };
+		E02E82371A1EAD9F0043BB09 /* WineBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82321A1EAD9F0043BB09 /* WineBottle.m */; };
+		E02E823E1A1EB1560043BB09 /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E823D1A1EB1560043BB09 /* NSString+Score.m */; };
+		E02E82411A1EB3970043BB09 /* Bottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82401A1EB3970043BB09 /* Bottle.m */; };
+		E02E82441A1EB3BC0043BB09 /* AlcoholSubType.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82431A1EB3BC0043BB09 /* AlcoholSubType.m */; };
+		E02E82471A1EB3C90043BB09 /* InventorySnapshotForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82461A1EB3C90043BB09 /* InventorySnapshotForBottle.m */; };
+		E02E824A1A1EB3D50043BB09 /* OrderForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82491A1EB3D50043BB09 /* OrderForBottle.m */; };
+		E02E824D1A1EB3F20043BB09 /* AlcoholType.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824C1A1EB3F20043BB09 /* AlcoholType.m */; };
+		E02E82501A1EB6E00043BB09 /* BeerBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824F1A1EB6E00043BB09 /* BeerBottle.m */; };
 		E0427673181359D7005E23F0 /* AlcoholTypes.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */; };
 		E0427674181359E0005E23F0 /* Bottles.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E02301FB17C9547F0086E6B2 /* Bottles.json */; };
-		E09204DE19082DF6005E7421 /* AlcoholSubType.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204D319082DF6005E7421 /* AlcoholSubType.m */; };
-		E09204DF19082DF6005E7421 /* AlcoholSubType+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204D519082DF6005E7421 /* AlcoholSubType+Create.m */; };
-		E09204E019082DF6005E7421 /* AlcoholType.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204D719082DF6005E7421 /* AlcoholType.m */; };
-		E09204E119082DF6005E7421 /* AlcoholType+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204D919082DF6005E7421 /* AlcoholType+Create.m */; };
-		E09204E219082DF6005E7421 /* Bottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204DB19082DF6005E7421 /* Bottle.m */; };
-		E09204E319082DF6005E7421 /* Bottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204DD19082DF6005E7421 /* Bottle+Create.m */; };
-		E09204E819082EC6005E7421 /* InventorySnapshotForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204E519082EC6005E7421 /* InventorySnapshotForBottle.m */; };
-		E09204E919082EC6005E7421 /* InventorySnapshotForBottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204E719082EC6005E7421 /* InventorySnapshotForBottle+Create.m */; };
-		E09204EE19082EFE005E7421 /* OrderForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204EB19082EFE005E7421 /* OrderForBottle.m */; };
-		E09204EF19082EFE005E7421 /* OrderForBottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204ED19082EFE005E7421 /* OrderForBottle+Create.m */; };
-		E09204F419082F1C005E7421 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F119082F1C005E7421 /* Order.m */; };
-		E09204F519082F1C005E7421 /* Order+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F319082F1C005E7421 /* Order+Create.m */; };
-		E09204FA19082F36005E7421 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = E09204F719082F36005E7421 /* Vendor.m */; };
 		E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0E83AEF19189D170096233A /* Duck.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -65,32 +70,42 @@
 		E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AlcoholSubTypes.json; sourceTree = "<group>"; };
 		E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AlcoholTypes.json; sourceTree = "<group>"; };
 		E02301FB17C9547F0086E6B2 /* Bottles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bottles.json; sourceTree = "<group>"; };
-		E09204D219082DF6005E7421 /* AlcoholSubType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlcoholSubType.h; sourceTree = "<group>"; };
-		E09204D319082DF6005E7421 /* AlcoholSubType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlcoholSubType.m; sourceTree = "<group>"; };
-		E09204D419082DF6005E7421 /* AlcoholSubType+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AlcoholSubType+Create.h"; sourceTree = "<group>"; };
-		E09204D519082DF6005E7421 /* AlcoholSubType+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AlcoholSubType+Create.m"; sourceTree = "<group>"; };
-		E09204D619082DF6005E7421 /* AlcoholType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlcoholType.h; sourceTree = "<group>"; };
-		E09204D719082DF6005E7421 /* AlcoholType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlcoholType.m; sourceTree = "<group>"; };
-		E09204D819082DF6005E7421 /* AlcoholType+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AlcoholType+Create.h"; sourceTree = "<group>"; };
-		E09204D919082DF6005E7421 /* AlcoholType+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AlcoholType+Create.m"; sourceTree = "<group>"; };
-		E09204DA19082DF6005E7421 /* Bottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bottle.h; sourceTree = "<group>"; };
-		E09204DB19082DF6005E7421 /* Bottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bottle.m; sourceTree = "<group>"; };
-		E09204DC19082DF6005E7421 /* Bottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bottle+Create.h"; sourceTree = "<group>"; };
-		E09204DD19082DF6005E7421 /* Bottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bottle+Create.m"; sourceTree = "<group>"; };
-		E09204E419082EC6005E7421 /* InventorySnapshotForBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorySnapshotForBottle.h; sourceTree = "<group>"; };
-		E09204E519082EC6005E7421 /* InventorySnapshotForBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventorySnapshotForBottle.m; sourceTree = "<group>"; };
-		E09204E619082EC6005E7421 /* InventorySnapshotForBottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InventorySnapshotForBottle+Create.h"; sourceTree = "<group>"; };
-		E09204E719082EC6005E7421 /* InventorySnapshotForBottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InventorySnapshotForBottle+Create.m"; sourceTree = "<group>"; };
-		E09204EA19082EFE005E7421 /* OrderForBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderForBottle.h; sourceTree = "<group>"; };
-		E09204EB19082EFE005E7421 /* OrderForBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderForBottle.m; sourceTree = "<group>"; };
-		E09204EC19082EFE005E7421 /* OrderForBottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderForBottle+Create.h"; sourceTree = "<group>"; };
-		E09204ED19082EFE005E7421 /* OrderForBottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OrderForBottle+Create.m"; sourceTree = "<group>"; };
-		E09204F019082F1C005E7421 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
-		E09204F119082F1C005E7421 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		E09204F219082F1C005E7421 /* Order+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Order+Create.h"; sourceTree = "<group>"; };
-		E09204F319082F1C005E7421 /* Order+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Order+Create.m"; sourceTree = "<group>"; };
-		E09204F619082F36005E7421 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
-		E09204F719082F36005E7421 /* Vendor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
+		E02E820E1A1EACD00043BB09 /* AlcoholSubType+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AlcoholSubType+Create.h"; path = "../../DuckiPhone/Duck/AlcoholSubType+Create.h"; sourceTree = "<group>"; };
+		E02E820F1A1EACD00043BB09 /* AlcoholSubType+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AlcoholSubType+Create.m"; path = "../../DuckiPhone/Duck/AlcoholSubType+Create.m"; sourceTree = "<group>"; };
+		E02E82101A1EACD00043BB09 /* AlcoholType+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AlcoholType+Create.h"; path = "../../DuckiPhone/Duck/AlcoholType+Create.h"; sourceTree = "<group>"; };
+		E02E82111A1EACD00043BB09 /* AlcoholType+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AlcoholType+Create.m"; path = "../../DuckiPhone/Duck/AlcoholType+Create.m"; sourceTree = "<group>"; };
+		E02E82141A1EACDD0043BB09 /* Bottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bottle+Create.h"; path = "../../DuckiPhone/Duck/Bottle+Create.h"; sourceTree = "<group>"; };
+		E02E82151A1EACDD0043BB09 /* Bottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Bottle+Create.m"; path = "../../DuckiPhone/Duck/Bottle+Create.m"; sourceTree = "<group>"; };
+		E02E82171A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "InventorySnapshotForBottle+Create.h"; path = "../../DuckiPhone/Duck/InventorySnapshotForBottle+Create.h"; sourceTree = "<group>"; };
+		E02E82181A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "InventorySnapshotForBottle+Create.m"; path = "../../DuckiPhone/Duck/InventorySnapshotForBottle+Create.m"; sourceTree = "<group>"; };
+		E02E821C1A1EAD3D0043BB09 /* InvoiceForBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InvoiceForBottle.h; path = ../../DuckiPhone/Duck/InvoiceForBottle.h; sourceTree = "<group>"; };
+		E02E821D1A1EAD3D0043BB09 /* InvoiceForBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InvoiceForBottle.m; path = ../../DuckiPhone/Duck/InvoiceForBottle.m; sourceTree = "<group>"; };
+		E02E82201A1EAD570043BB09 /* LiquorBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiquorBottle.h; path = ../../DuckiPhone/Duck/LiquorBottle.h; sourceTree = "<group>"; };
+		E02E82211A1EAD570043BB09 /* LiquorBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LiquorBottle.m; path = ../../DuckiPhone/Duck/LiquorBottle.m; sourceTree = "<group>"; };
+		E02E82261A1EAD7C0043BB09 /* OrderForBottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OrderForBottle+Create.h"; path = "../../DuckiPhone/Duck/OrderForBottle+Create.h"; sourceTree = "<group>"; };
+		E02E82271A1EAD7C0043BB09 /* OrderForBottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "OrderForBottle+Create.m"; path = "../../DuckiPhone/Duck/OrderForBottle+Create.m"; sourceTree = "<group>"; };
+		E02E82291A1EAD9F0043BB09 /* Varietal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Varietal.h; path = ../../DuckiPhone/Duck/Varietal.h; sourceTree = "<group>"; };
+		E02E822A1A1EAD9F0043BB09 /* Varietal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Varietal.m; path = ../../DuckiPhone/Duck/Varietal.m; sourceTree = "<group>"; };
+		E02E822B1A1EAD9F0043BB09 /* Vendor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vendor.h; path = ../../DuckiPhone/Duck/Vendor.h; sourceTree = "<group>"; };
+		E02E822C1A1EAD9F0043BB09 /* Vendor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vendor.m; path = ../../DuckiPhone/Duck/Vendor.m; sourceTree = "<group>"; };
+		E02E822F1A1EAD9F0043BB09 /* Vineyard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vineyard.h; path = ../../DuckiPhone/Duck/Vineyard.h; sourceTree = "<group>"; };
+		E02E82301A1EAD9F0043BB09 /* Vineyard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vineyard.m; path = ../../DuckiPhone/Duck/Vineyard.m; sourceTree = "<group>"; };
+		E02E82311A1EAD9F0043BB09 /* WineBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineBottle.h; path = ../../DuckiPhone/Duck/WineBottle.h; sourceTree = "<group>"; };
+		E02E82321A1EAD9F0043BB09 /* WineBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineBottle.m; path = ../../DuckiPhone/Duck/WineBottle.m; sourceTree = "<group>"; };
+		E02E823C1A1EB1560043BB09 /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "../../DuckiPhone/Duck/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
+		E02E823D1A1EB1560043BB09 /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "../../DuckiPhone/Duck/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
+		E02E823F1A1EB3970043BB09 /* Bottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bottle.h; path = ../../DuckiPhone/Duck/Bottle.h; sourceTree = "<group>"; };
+		E02E82401A1EB3970043BB09 /* Bottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bottle.m; path = ../../DuckiPhone/Duck/Bottle.m; sourceTree = "<group>"; };
+		E02E82421A1EB3BC0043BB09 /* AlcoholSubType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlcoholSubType.h; path = ../../DuckiPhone/Duck/AlcoholSubType.h; sourceTree = "<group>"; };
+		E02E82431A1EB3BC0043BB09 /* AlcoholSubType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlcoholSubType.m; path = ../../DuckiPhone/Duck/AlcoholSubType.m; sourceTree = "<group>"; };
+		E02E82451A1EB3C90043BB09 /* InventorySnapshotForBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InventorySnapshotForBottle.h; path = ../../DuckiPhone/Duck/InventorySnapshotForBottle.h; sourceTree = "<group>"; };
+		E02E82461A1EB3C90043BB09 /* InventorySnapshotForBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventorySnapshotForBottle.m; path = ../../DuckiPhone/Duck/InventorySnapshotForBottle.m; sourceTree = "<group>"; };
+		E02E82481A1EB3D50043BB09 /* OrderForBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderForBottle.h; path = ../../DuckiPhone/Duck/OrderForBottle.h; sourceTree = "<group>"; };
+		E02E82491A1EB3D50043BB09 /* OrderForBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderForBottle.m; path = ../../DuckiPhone/Duck/OrderForBottle.m; sourceTree = "<group>"; };
+		E02E824B1A1EB3F20043BB09 /* AlcoholType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlcoholType.h; path = ../../DuckiPhone/Duck/AlcoholType.h; sourceTree = "<group>"; };
+		E02E824C1A1EB3F20043BB09 /* AlcoholType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlcoholType.m; path = ../../DuckiPhone/Duck/AlcoholType.m; sourceTree = "<group>"; };
+		E02E824E1A1EB6E00043BB09 /* BeerBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeerBottle.h; path = ../../DuckiPhone/Duck/BeerBottle.h; sourceTree = "<group>"; };
+		E02E824F1A1EB6E00043BB09 /* BeerBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeerBottle.m; path = ../../DuckiPhone/Duck/BeerBottle.m; sourceTree = "<group>"; };
 		E0E83AF019189D170096233A /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,32 +153,7 @@
 			children = (
 				E0E83AEF19189D170096233A /* Duck.xcdatamodeld */,
 				E02301DF17C952820086E6B2 /* main.m */,
-				E09204D219082DF6005E7421 /* AlcoholSubType.h */,
-				E09204D319082DF6005E7421 /* AlcoholSubType.m */,
-				E09204D419082DF6005E7421 /* AlcoholSubType+Create.h */,
-				E09204D519082DF6005E7421 /* AlcoholSubType+Create.m */,
-				E09204D619082DF6005E7421 /* AlcoholType.h */,
-				E09204D719082DF6005E7421 /* AlcoholType.m */,
-				E09204D819082DF6005E7421 /* AlcoholType+Create.h */,
-				E09204D919082DF6005E7421 /* AlcoholType+Create.m */,
-				E09204DA19082DF6005E7421 /* Bottle.h */,
-				E09204DB19082DF6005E7421 /* Bottle.m */,
-				E09204DC19082DF6005E7421 /* Bottle+Create.h */,
-				E09204DD19082DF6005E7421 /* Bottle+Create.m */,
-				E09204E419082EC6005E7421 /* InventorySnapshotForBottle.h */,
-				E09204E519082EC6005E7421 /* InventorySnapshotForBottle.m */,
-				E09204E619082EC6005E7421 /* InventorySnapshotForBottle+Create.h */,
-				E09204E719082EC6005E7421 /* InventorySnapshotForBottle+Create.m */,
-				E09204EA19082EFE005E7421 /* OrderForBottle.h */,
-				E09204EB19082EFE005E7421 /* OrderForBottle.m */,
-				E09204EC19082EFE005E7421 /* OrderForBottle+Create.h */,
-				E09204ED19082EFE005E7421 /* OrderForBottle+Create.m */,
-				E09204F019082F1C005E7421 /* Order.h */,
-				E09204F119082F1C005E7421 /* Order.m */,
-				E09204F219082F1C005E7421 /* Order+Create.h */,
-				E09204F319082F1C005E7421 /* Order+Create.m */,
-				E09204F619082F36005E7421 /* Vendor.h */,
-				E09204F719082F36005E7421 /* Vendor.m */,
+				E02E82381A1EADAC0043BB09 /* ImportedFromIOSApp */,
 				E02301F917C9547F0086E6B2 /* AlcoholSubTypes.json */,
 				E02301FA17C9547F0086E6B2 /* AlcoholTypes.json */,
 				E02301FB17C9547F0086E6B2 /* Bottles.json */,
@@ -179,6 +169,49 @@
 				E02301E217C952820086E6B2 /* OSXData-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E02E82381A1EADAC0043BB09 /* ImportedFromIOSApp */ = {
+			isa = PBXGroup;
+			children = (
+				E02E823F1A1EB3970043BB09 /* Bottle.h */,
+				E02E82401A1EB3970043BB09 /* Bottle.m */,
+				E02E823C1A1EB1560043BB09 /* NSString+Score.h */,
+				E02E823D1A1EB1560043BB09 /* NSString+Score.m */,
+				E02E824B1A1EB3F20043BB09 /* AlcoholType.h */,
+				E02E824C1A1EB3F20043BB09 /* AlcoholType.m */,
+				E02E820E1A1EACD00043BB09 /* AlcoholSubType+Create.h */,
+				E02E820F1A1EACD00043BB09 /* AlcoholSubType+Create.m */,
+				E02E82421A1EB3BC0043BB09 /* AlcoholSubType.h */,
+				E02E82431A1EB3BC0043BB09 /* AlcoholSubType.m */,
+				E02E82101A1EACD00043BB09 /* AlcoholType+Create.h */,
+				E02E82111A1EACD00043BB09 /* AlcoholType+Create.m */,
+				E02E82141A1EACDD0043BB09 /* Bottle+Create.h */,
+				E02E82151A1EACDD0043BB09 /* Bottle+Create.m */,
+				E02E82171A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.h */,
+				E02E82181A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.m */,
+				E02E821C1A1EAD3D0043BB09 /* InvoiceForBottle.h */,
+				E02E821D1A1EAD3D0043BB09 /* InvoiceForBottle.m */,
+				E02E82201A1EAD570043BB09 /* LiquorBottle.h */,
+				E02E82211A1EAD570043BB09 /* LiquorBottle.m */,
+				E02E82451A1EB3C90043BB09 /* InventorySnapshotForBottle.h */,
+				E02E82461A1EB3C90043BB09 /* InventorySnapshotForBottle.m */,
+				E02E82261A1EAD7C0043BB09 /* OrderForBottle+Create.h */,
+				E02E82271A1EAD7C0043BB09 /* OrderForBottle+Create.m */,
+				E02E82481A1EB3D50043BB09 /* OrderForBottle.h */,
+				E02E82491A1EB3D50043BB09 /* OrderForBottle.m */,
+				E02E82291A1EAD9F0043BB09 /* Varietal.h */,
+				E02E822A1A1EAD9F0043BB09 /* Varietal.m */,
+				E02E822B1A1EAD9F0043BB09 /* Vendor.h */,
+				E02E822C1A1EAD9F0043BB09 /* Vendor.m */,
+				E02E822F1A1EAD9F0043BB09 /* Vineyard.h */,
+				E02E82301A1EAD9F0043BB09 /* Vineyard.m */,
+				E02E824E1A1EB6E00043BB09 /* BeerBottle.h */,
+				E02E824F1A1EB6E00043BB09 /* BeerBottle.m */,
+				E02E82311A1EAD9F0043BB09 /* WineBottle.h */,
+				E02E82321A1EAD9F0043BB09 /* WineBottle.m */,
+			);
+			name = ImportedFromIOSApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,21 +266,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E09204DF19082DF6005E7421 /* AlcoholSubType+Create.m in Sources */,
+				E02E823E1A1EB1560043BB09 /* NSString+Score.m in Sources */,
+				E02E82221A1EAD570043BB09 /* LiquorBottle.m in Sources */,
+				E02E82331A1EAD9F0043BB09 /* Varietal.m in Sources */,
+				E02E82191A1EACFF0043BB09 /* InventorySnapshotForBottle+Create.m in Sources */,
+				E02E82371A1EAD9F0043BB09 /* WineBottle.m in Sources */,
+				E02E82121A1EACD00043BB09 /* AlcoholSubType+Create.m in Sources */,
+				E02E821F1A1EAD3D0043BB09 /* InvoiceForBottle.m in Sources */,
+				E02E82501A1EB6E00043BB09 /* BeerBottle.m in Sources */,
+				E02E82361A1EAD9F0043BB09 /* Vineyard.m in Sources */,
+				E02E82281A1EAD7C0043BB09 /* OrderForBottle+Create.m in Sources */,
 				E02301E017C952820086E6B2 /* main.m in Sources */,
-				E09204E919082EC6005E7421 /* InventorySnapshotForBottle+Create.m in Sources */,
-				E09204E219082DF6005E7421 /* Bottle.m in Sources */,
-				E09204DE19082DF6005E7421 /* AlcoholSubType.m in Sources */,
-				E09204EF19082EFE005E7421 /* OrderForBottle+Create.m in Sources */,
-				E09204E319082DF6005E7421 /* Bottle+Create.m in Sources */,
+				E02E82131A1EACD00043BB09 /* AlcoholType+Create.m in Sources */,
+				E02E82441A1EB3BC0043BB09 /* AlcoholSubType.m in Sources */,
+				E02E824D1A1EB3F20043BB09 /* AlcoholType.m in Sources */,
 				E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */,
-				E09204F419082F1C005E7421 /* Order.m in Sources */,
-				E09204E119082DF6005E7421 /* AlcoholType+Create.m in Sources */,
-				E09204EE19082EFE005E7421 /* OrderForBottle.m in Sources */,
-				E09204E819082EC6005E7421 /* InventorySnapshotForBottle.m in Sources */,
-				E09204F519082F1C005E7421 /* Order+Create.m in Sources */,
-				E09204E019082DF6005E7421 /* AlcoholType.m in Sources */,
-				E09204FA19082F36005E7421 /* Vendor.m in Sources */,
+				E02E82411A1EB3970043BB09 /* Bottle.m in Sources */,
+				E02E82161A1EACDD0043BB09 /* Bottle+Create.m in Sources */,
+				E02E82471A1EB3C90043BB09 /* InventorySnapshotForBottle.m in Sources */,
+				E02E82341A1EAD9F0043BB09 /* Vendor.m in Sources */,
+				E02E824A1A1EB3D50043BB09 /* OrderForBottle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
