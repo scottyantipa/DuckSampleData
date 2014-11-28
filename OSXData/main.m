@@ -11,6 +11,49 @@
 #import "AlcoholSubType+Create.h"
 //#import "InventorySnapshotForBottle+Create.h"
 
+const BOOL REMOTE = NO;
+
+NSMutableString * stringForRemote() {
+    return [[NSMutableString alloc] initWithString:@"http://ec2-54-82-243-92.compute-1.amazonaws.com:3333/"];
+}
+
+NSMutableString * stringForLocal() {
+    return [[NSMutableString alloc] initWithString:@"http://192.168.1.114:3333/"];
+}
+
+NSMutableString * baseUrl() {
+    return REMOTE ? stringForRemote() : stringForLocal();
+}
+
+NSMutableString * baseBottleUrl() {
+    NSMutableString * base = baseUrl();
+    [base appendString:[NSString stringWithFormat:@"bottle"]];
+    return base;
+}
+
+//
+// urls for json data
+//
+NSMutableString * baseVarietalUrl() {
+    NSMutableString * base = baseUrl();
+    [base appendString:@"varietals"];
+    return base;
+}
+
+NSMutableString * baseSubTypesUrl() {
+    NSMutableString * base = baseUrl();
+    [base appendString:@"alcoholSubTypes"];
+    return base;
+}
+
+NSMutableString * baseTypesUrl() {
+    NSMutableString * base = baseUrl();
+    [base appendString:@"alcoholTypes"];
+    return base;
+}
+
+
+
 static NSManagedObjectModel *managedObjectModel()
 {
     static NSManagedObjectModel *model = nil;
@@ -61,48 +104,45 @@ static NSManagedObjectContext *managedObjectContext()
 static void *enterTypes() {
     // create context
     NSManagedObjectContext *context = managedObjectContext();
+
     
-    //create the categories and save them
-    NSError* err = nil;
-    NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"AlcoholTypes" ofType:@"json"];
-    NSArray* AlcoholTypes = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
-                                                            options:kNilOptions
-                                                              error:&err];
+    // fetch types
+    NSURL * url = [[NSURL alloc] initWithString:baseTypesUrl()];
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    NSError * fetchSubTypesErr;
+    NSURLResponse * response;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&fetchSubTypesErr];
+    NSError * serialErr;
+    NSMutableArray * types = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&serialErr];
     
-    [AlcoholTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    
+    for (NSDictionary * obj in types) {
         [AlcoholType newTypeForName:[obj objectForKey:@"name"] inManagedObjectContext:context];
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-    }];
-    
-
-    // list out the categories (FOR DEBEGGUING)
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription
-//                                   entityForName:@"AlcoholType"
-//                                   inManagedObjectContext:context];
-//    [fetchRequest setEntity:entity];
-//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&err];
-//    for (AlcoholType *type in fetchedObjects) {
-//        NSLog(@"Type Created: %@", type.name);
-//    }
+    }
 }
 
 static void *enterSubTypes() {
     // create context
+    
+    // fetch sub stypes
     NSManagedObjectContext *context = managedObjectContext();
+    NSURL * url = [[NSURL alloc] initWithString:baseSubTypesUrl()];
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    NSError * fetchSubTypesErr;
+    NSURLResponse * response;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&fetchSubTypesErr];
+    NSError * serialErr;
+    NSMutableArray * subTypes = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&serialErr];
     
-    
-    //create the bottles and save them
-    NSError* err = nil;
-    NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"AlcoholSubTypes" ofType:@"json"];
-    NSArray* SubTypes = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
-                                                        options:kNilOptions
-                                                          error:&err];
-    
-    [SubTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    for (NSDictionary * obj in subTypes) {
         AlcoholSubType * subType = [AlcoholSubType newSubTypeFromName:[obj objectForKey:@"name"] inManagedObjectContext:context];
         AlcoholType * parent = [AlcoholType alcoholTypeFromName:[obj objectForKey:@"parentType"] inManagedObjectContext:context];
         subType.parent = parent;
@@ -110,7 +150,7 @@ static void *enterSubTypes() {
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-    }];
+    }
     
     // list out the subTypes
 //    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -125,26 +165,29 @@ static void *enterSubTypes() {
 }
 
 static void *enterVarietals() {
+    // get varietals from server
+    NSURL * url = [[NSURL alloc] initWithString:baseVarietalUrl()];
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    NSError * varietalsFetchErr;
+    NSURLResponse * response;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&varietalsFetchErr];
+    NSError * serialErr;
+    NSArray * varietals = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&serialErr];
+
     // create context
     NSManagedObjectContext *context = managedObjectContext();
-    
-    
-    //create the bottles and save them
-    NSError* err = nil;
-    NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"Varietals" ofType:@"json"];
-    NSArray* SubTypes = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
-                                                        options:kNilOptions
-                                                          error:&err];
-    
-    [SubTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+
+    for (NSDictionary * obj in varietals) {
         NSString * subTypeName = [obj objectForKey:@"subType"];
         NSString * name = [obj objectForKey:@"name"];
         if (subTypeName == nil || [subTypeName isEqualToString:@""] || name == nil || [name isEqualToString:@""]) {
-            return;
+            continue;
         }
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:subTypeName inManagedObjectContext:context];
         if (subType == nil) {
-            return;
+            continue;
         }
         Varietal * varietal = [AlcoholSubType newVarietalForSubType:subType inContext:context];
         varietal.name = name;
@@ -152,16 +195,11 @@ static void *enterVarietals() {
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-    }];
-    
+    }
 }
 
 static void *enterBottles() {
-    NSMutableString * remoteUrl = [NSMutableString stringWithFormat:@"http://ec2-54-82-243-92.compute-1.amazonaws.com:3333/bottle"];
-    NSMutableString * localUrl = [NSMutableString stringWithFormat:@"http://10.0.1.23:3333/bottle"];
-    BOOL isRemote = NO;
-    NSString * urlBase = isRemote ? remoteUrl : localUrl;
-    NSURL * url = [[NSURL alloc] initWithString:urlBase];
+    NSURL * url = [[NSURL alloc] initWithString:baseBottleUrl()];
     NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:url];
@@ -173,15 +211,15 @@ static void *enterBottles() {
     
     // create context
     NSManagedObjectContext *context = managedObjectContext();
-
-    [bottles enumerateKeysAndObjectsUsingBlock:^(id key, id record, BOOL *stop) {
+    
+    [bottles enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 
         // unpack all the info from the record
-        NSString * name = [record objectForKey:@"name"];
-        NSNumber * barcodeNum = [record objectForKey:@"barcode"];
+        NSString * name = [obj objectForKey:@"name"];
+        NSNumber * barcodeNum = [obj objectForKey:@"barcode"];
         NSString * barcode = [barcodeNum stringValue];
-        NSString * alcoholSubType = [record objectForKey:@"alcoholSubType"];
-        NSString * alcoholType = [record objectForKey:@"alcoholType"];
+        NSString * alcoholSubType = [obj objectForKey:@"alcoholSubType"];
+        NSString * alcoholType = [obj objectForKey:@"alcoholType"];
         
         // create the bottle and retrieve the subtype
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:alcoholSubType inManagedObjectContext:context];
