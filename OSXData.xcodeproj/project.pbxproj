@@ -29,6 +29,7 @@
 		E02E824A1A1EB3D50043BB09 /* OrderForBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E82491A1EB3D50043BB09 /* OrderForBottle.m */; };
 		E02E824D1A1EB3F20043BB09 /* AlcoholType.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824C1A1EB3F20043BB09 /* AlcoholType.m */; };
 		E02E82501A1EB6E00043BB09 /* BeerBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = E02E824F1A1EB6E00043BB09 /* BeerBottle.m */; };
+		E040E2B41A295CDB00AFDE52 /* WineBottle+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E040E2B31A295CDB00AFDE52 /* WineBottle+Create.m */; };
 		E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0E83AEF19189D170096233A /* Duck.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,8 @@
 		E02E824C1A1EB3F20043BB09 /* AlcoholType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlcoholType.m; path = ../../DuckiPhone/Duck/AlcoholType.m; sourceTree = "<group>"; };
 		E02E824E1A1EB6E00043BB09 /* BeerBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeerBottle.h; path = ../../DuckiPhone/Duck/BeerBottle.h; sourceTree = "<group>"; };
 		E02E824F1A1EB6E00043BB09 /* BeerBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeerBottle.m; path = ../../DuckiPhone/Duck/BeerBottle.m; sourceTree = "<group>"; };
+		E040E2B21A295CDB00AFDE52 /* WineBottle+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WineBottle+Create.h"; path = "../../DuckiPhone/Duck/WineBottle+Create.h"; sourceTree = "<group>"; };
+		E040E2B31A295CDB00AFDE52 /* WineBottle+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WineBottle+Create.m"; path = "../../DuckiPhone/Duck/WineBottle+Create.m"; sourceTree = "<group>"; };
 		E0E83AF019189D170096233A /* Duck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Duck.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +201,8 @@
 				E02E824F1A1EB6E00043BB09 /* BeerBottle.m */,
 				E02E82311A1EAD9F0043BB09 /* WineBottle.h */,
 				E02E82321A1EAD9F0043BB09 /* WineBottle.m */,
+				E040E2B21A295CDB00AFDE52 /* WineBottle+Create.h */,
+				E040E2B31A295CDB00AFDE52 /* WineBottle+Create.m */,
 			);
 			name = ImportedFromIOSApp;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				E02E82131A1EACD00043BB09 /* AlcoholType+Create.m in Sources */,
 				E02E82441A1EB3BC0043BB09 /* AlcoholSubType.m in Sources */,
 				E02E824D1A1EB3F20043BB09 /* AlcoholType.m in Sources */,
+				E040E2B41A295CDB00AFDE52 /* WineBottle+Create.m in Sources */,
 				E0E83AF119189D170096233A /* Duck.xcdatamodeld in Sources */,
 				E02E82411A1EB3970043BB09 /* Bottle.m in Sources */,
 				E02E82161A1EACDD0043BB09 /* Bottle+Create.m in Sources */,

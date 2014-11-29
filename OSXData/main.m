@@ -9,7 +9,7 @@
 #import "Bottle+Create.h"
 #import "AlcoholType+Create.h"
 #import "AlcoholSubType+Create.h"
-//#import "InventorySnapshotForBottle+Create.h"
+#import "WineBottle+Create.h"
 
 const BOOL REMOTE = NO;
 
@@ -18,7 +18,7 @@ NSMutableString * stringForRemote() {
 }
 
 NSMutableString * stringForLocal() {
-    return [[NSMutableString alloc] initWithString:@"http://192.168.1.114:3333/"];
+    return [[NSMutableString alloc] initWithString:@"http://10.0.1.23:3333/"];
 }
 
 NSMutableString * baseUrl() {
@@ -223,15 +223,33 @@ static void *enterBottles() {
         
         // create the bottle and retrieve the subtype
         AlcoholSubType * subType = [AlcoholSubType alcoholSubTypeFromName:alcoholSubType inManagedObjectContext:context];
+        AlcoholType * type = [AlcoholType alcoholTypeFromName:alcoholType inManagedObjectContext:context];
         if (!subType || !alcoholSubType) {
             return; // don't add the bottle
         }
-        Bottle * bottle = [Bottle newBottleForType:subType.parent inManagedObjectContext:context];
-        bottle.barcode = barcode;
-        bottle.name = name;
-        bottle.userHasBottle = [NSNumber numberWithBool:NO];
-        bottle.subType = subType;
-        bottle.type = [AlcoholType alcoholTypeFromName:alcoholType inManagedObjectContext:context];
+        if ([alcoholType isEqualToString:@"Wine"]) {
+            // NOTE: There is repeated code for Wine vs Bottle creation below (not sure how to do it otherwise)
+            NSString * varietalName = [obj objectForKey:@"varietal"];
+            NSString * vineyardName = [obj objectForKey:@"vineyard"];
+            Vineyard * vineyard = [WineBottle vineyardForName:vineyardName inContext:context];
+            if (vineyard == nil) {
+                vineyard = [WineBottle newVineyardForName:vineyardName inContext:context];
+            }
+            Varietal * varietal = [AlcoholSubType varietalForName:varietalName inContext:context];
+            WineBottle * bottle = [Bottle newWineBottleForName:name varietal:varietal inManagedObjectContext:context];
+            bottle.vineyard = vineyard;
+            bottle.userHasBottle = [NSNumber numberWithBool:NO];
+            bottle.subType = subType;
+            bottle.barcode = barcode;
+            bottle.type = type;
+        } else {
+            Bottle * bottle = [Bottle newBottleForType:subType.parent inManagedObjectContext:context];
+            bottle.barcode = barcode;
+            bottle.name = name;
+            bottle.userHasBottle = [NSNumber numberWithBool:NO];
+            bottle.subType = subType;
+            bottle.type = type;
+        }
         NSError *error; // save it
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
