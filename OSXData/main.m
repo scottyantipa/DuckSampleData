@@ -227,17 +227,17 @@ static void *enterBottles() {
         if (!subType || !alcoholSubType) {
             return; // don't add the bottle
         }
+        NSString * producerName = [obj objectForKey:@"producer"];
+        Producer * producer = [Bottle producerForName:producerName inContext:context];
+        if (producer == nil) {
+            producer = [Bottle newProducerForName:producerName inContext:context];
+        }
         if ([alcoholType isEqualToString:@"Wine"]) {
             // NOTE: There is repeated code for Wine vs Bottle creation below (not sure how to do it otherwise)
             NSString * varietalName = [obj objectForKey:@"varietal"];
-            NSString * vineyardName = [obj objectForKey:@"vineyard"];
-            Vineyard * vineyard = [WineBottle vineyardForName:vineyardName inContext:context];
-            if (vineyard == nil) {
-                vineyard = [WineBottle newVineyardForName:vineyardName inContext:context];
-            }
             Varietal * varietal = [AlcoholSubType varietalForName:varietalName inContext:context];
             WineBottle * bottle = [Bottle newWineBottleForName:name varietal:varietal inManagedObjectContext:context];
-            bottle.vineyard = vineyard;
+            bottle.producer = producer;
             bottle.userHasBottle = [NSNumber numberWithBool:NO];
             bottle.subType = subType;
             bottle.barcode = barcode;
@@ -249,6 +249,7 @@ static void *enterBottles() {
             bottle.userHasBottle = [NSNumber numberWithBool:NO];
             bottle.subType = subType;
             bottle.type = type;
+            bottle.producer = producer;
         }
         NSError *error; // save it
         if (![context save:&error]) {
